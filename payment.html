@@ -1,19 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Payment</title>
-<link rel="stylesheet" href="style.css">
-<script defer src="payment.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platform Fee Payment - Pautang B1 Trade</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom right, #0d47a1, #f57c00, #795548);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #e0e0e0;
+      font-size: 15px;
+    }
+
+    img {
+      width: 280px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      margin-bottom: 25px;
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    button {
+      background: linear-gradient(90deg, #1565c0, #f57c00);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-<div class="falling-bg"></div>
-<header><nav><a href="dashboard.html">Dashboard</a> | <a href="membership.html">Membership</a> | <a href="borrow.html">Borrow</a> | <a href="about.html">About</a></nav></header>
-<div class="content">
-  <h2>Platform Fee ₱99.99</h2>
-  <img src="https://github.com/b1loan/Utang-Now/raw/main/IMG_9548.jpeg" alt="QR Code">
-  <p>Upload payment screenshot:</p>
-  <input type="file" accept="image/*">
-  <div id="notice" class="hidden">Verification in 24 hours (screenshot this page)</div>
-</div>
+  <div class="container">
+    <h2>Platform Fee Payment</h2>
+    <p>Scan this QR Code to pay your ₱99.99 platform fee.</p>
+    <img src="files/IMG_9548.jpeg" alt="QR Code" />
+    <br />
+    <button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
+  </div>
 </body>
 </html>
