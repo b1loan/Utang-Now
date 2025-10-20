@@ -1,19 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Borrow</title>
-<link rel="stylesheet" href="style.css">
-<script defer src="borrow.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Borrow - Pautang B1 Trade</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom right, #0d47a1, #f57c00, #795548);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 30px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 15px;
+      color: #e0e0e0;
+      margin-bottom: 15px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.85);
+      color: #333;
+    }
+
+    button {
+      background: linear-gradient(90deg, #1565c0, #f57c00);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .result {
+      margin-top: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .falling-currency {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .currency {
+      position: absolute;
+      top: -50px;
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.25);
+      animation: fall linear infinite;
+      user-select: none;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0.3; }
+    }
+  </style>
 </head>
 <body>
-<div class="falling-bg"></div>
-<header><nav><a href="dashboard.html">Dashboard</a> | <a href="membership.html">Membership</a> | <a href="borrow.html">Borrow</a> | <a href="about.html">About</a></nav></header>
-<div class="content">
-  <h2>Borrow Page</h2>
-  <p>Interest rate: 10% (3mo), 18% (6mo), 21% (12mo)</p>
-  <input id="loanAmount" type="number" placeholder="Enter amount (max ₱5500 first time)" max="5500">
-  <select id="loanTerm"><option>3 months</option><option>6 months</option><option>12 months</option></select>
-  <a href="calculate.html" class="button">Calculate</a>
-</div>
+  <div class="falling-currency" id="fallingCurrency"></div>
+
+  <div class="container">
+    <h2>Borrow Simulation</h2>
+    <p>First time borrowers can loan up to ₱5,500.00</p>
+    <input type="number" id="loanAmount" placeholder="Enter amount (₱)" max="5500" min="100" />
+    <select id="loanTerm">
+      <option value="3">3 months (10%)</option>
+      <option value="6">6 months (18%)</option>
+      <option value="12">12 months (21%)</option>
+    </select>
+    <button onclick="calculateLoan()">Calculate</button>
+
+    <div class="result" id="result">
+      <p>Enter your amount and select term to see details.</p>
+    </div>
+  </div>
+
+  <script>
+    // Falling currency animation
+    const symbols = ['₱', '$', '€'];
+    const container = document.getElementById('fallingCurrency');
+    for (let i = 0; i < 25; i++) {
+      const symbol = document.createElement('div');
+      symbol.classList.add('currency');
+      symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      symbol.style.left = Math.random() * 100 + 'vw';
+      symbol.style.animationDuration = (4 + Math.random() * 4) + 's';
+      symbol.style.fontSize = (16 + Math.random() * 20) + 'px';
+      container.appendChild(symbol);
+    }
+
+    // Loan calculation
+    function calculateLoan() {
+      const amount = parseFloat(document.getElementById("loanAmount").value);
+      const term = parseInt(document.getElementById("loanTerm").value);
+      const result = document.getElementById("result");
+
+      if (!amount || amount < 100) {
+        result.innerHTML = "<p>Please enter a valid amount.</p>";
+        return;
+      }
+
+      let interestRate = 0.1;
+      if (term === 6) interestRate = 0.18;
+      if (term === 12) interestRate = 0.21;
+
+      const interest = amount * interestRate;
+      const platformFee = 99.99;
+      const total = amount + interest + platformFee;
+      const monthly = total / term;
+
+      result.innerHTML = `
+        <p><b>Loan Amount:</b> ₱${amount.toFixed(2)}</p>
+        <p><b>Interest Rate:</b> ${(interestRate * 100).toFixed(0)}%</p>
+        <p><b>Platform Fee:</b> ₱${platformFee.toFixed(2)}</p>
+        <p><b>Total Repayment:</b> ₱${total.toFixed(2)}</p>
+        <p><b>Monthly Payment:</b> ₱${monthly.toFixed(2)} per month</p>
+      `;
+    }
+  </script>
 </body>
 </html>
