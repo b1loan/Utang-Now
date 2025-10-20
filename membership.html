@@ -1,18 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Membership Fee</title>
-<link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Membership Fee - Pautang B1 Trade</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom right, #0d47a1, #f57c00, #795548);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    p {
+      color: #e0e0e0;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .membership-img {
+      width: 200px;
+      border-radius: 12px;
+      margin: 15px 0;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .membership-img:hover {
+      transform: scale(1.05);
+    }
+
+    input[type="file"] {
+      display: block;
+      margin: 15px auto 20px auto;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    input[type="file"]::-webkit-file-upload-button {
+      background: linear-gradient(90deg, #1565c0, #f57c00);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 15px;
+      cursor: pointer;
+    }
+
+    button {
+      background: linear-gradient(90deg, #1565c0, #f57c00);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .bonus {
+      font-size: 14px;
+      color: #a7ffeb;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-<div class="falling-bg"></div>
-<header><nav><a href="dashboard.html">Dashboard</a> | <a href="membership.html">Membership</a> | <a href="borrow.html">Borrow</a> | <a href="about.html">About</a></nav></header>
-<div class="content">
-  <h2>Membership Fee ₱399</h2>
-  <img src="https://github.com/b1loan/Utang-Now/raw/main/IMG_9546.jpeg" alt="Membership QR">
-  <p>Upload your payment screenshot:</p>
-  <input type="file" accept="image/*">
-  <a href="borrow.html" class="button">Continue</a>
-</div>
+  <div class="container">
+    <h2>Membership Fee</h2>
+    <p>New members bonus: <strong>₱500.00</strong></p>
+    <p>To activate your account, pay the <strong>₱399 membership fee</strong>.</p>
+
+    <img src="files/IMG_9546.jpeg" alt="Membership Fee QR" class="membership-img" />
+
+    <p>After sending payment, upload your payment screenshot below:</p>
+    <input type="file" id="paymentProof" accept="image/*" />
+
+    <button onclick="submitProof()">Submit Payment Proof</button>
+    <p class="bonus">After submission, verification takes up to 24 hours.</p>
+  </div>
+
+  <script>
+    function submitProof() {
+      alert("Your payment screenshot has been submitted. Verification will take up to 24 hours.");
+      window.location.href = 'borrow.html';
+    }
+  </script>
 </body>
 </html>
