@@ -1,0 +1,54 @@
+
+/* global styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+:root{
+  --primary1:#0d47a1; /* blue */
+  --accent1:#ff9800;  /* orange */
+  --accent2:#6d4c41;  /* brown */
+  --glass: rgba(255,255,255,0.08);
+}
+*{box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{margin:0;min-height:100vh;color:#fff;background:linear-gradient(135deg,var(--primary1), #1565c0, #ff9800);}
+.container{max-width:980px;margin:40px auto;padding:24px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));border-radius:12px;backdrop-filter: blur(6px);}
+
+/* header */
+.header{display:flex;align-items:center;gap:16px}
+.logo{font-weight:700;font-size:20px;letter-spacing:1px}
+.subtitle{font-size:13px;opacity:0.85}
+
+/* simple form */
+.form{display:grid;gap:12px;padding:12px}
+.input{padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:#fff}
+.btn{padding:10px 14px;border-radius:8px;border:none;cursor:pointer;background:var(--accent1);color:#111;font-weight:600}
+
+/* money falling animation */
+.money{
+  position:fixed;left:0;top:0;pointer-events:none;width:100%;height:100%;overflow:hidden;z-index:0;
+}
+.coin{
+  position:absolute;top:-10vh;font-weight:700;opacity:0.9;
+  animation:fall linear infinite;
+  transform-origin:center;
+}
+@keyframes fall{
+  to{transform:translateY(120vh) rotate(360deg);opacity:0.6}
+}
+
+/* cards & slideshow */
+.card{background:var(--glass);padding:12px;border-radius:10px}
+.slideshow{position:relative;overflow:hidden;border-radius:10px}
+.slideshow img{width:100%;display:block}
+.controls{display:flex;gap:6px;justify-content:center;margin-top:8px}
+.smallbtn{padding:6px 8px;border-radius:6px;border:none;background:rgba(255,255,255,0.06);color:#fff}
+
+/* dashboard */
+.hi{font-size:20px;margin-bottom:8px}
+.info{display:flex;gap:12px;flex-wrap:wrap}
+
+/* modal for QR */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:40}
+.modal .box{background:#fff;padding:18px;border-radius:8px;color:#000;max-width:90%;max-height:90%;overflow:auto}
+.smallnote{font-size:13px;opacity:0.9}
+
+/* responsive */
+@media(max-width:600px){.container{margin:16px;padding:12px}}
