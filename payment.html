@@ -1,0 +1,26 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Payment - Pautang Peso</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="assets/style.css"></head>
+<body>
+  <div class="container">
+    <div class="header"><div class="logo">Platform Fee Payment</div></div>
+    <div class="card">
+      <p>Scan this QR to pay the platform fee (₱99.99). After payment, screenshot and upload the proof. Your upload will show a 24 hours verification notice.</p>
+      <img src="https://raw.githubusercontent.com/b1loan/Utang-Now/92d5f39da3772a2f88d879c7da729187fa494213/IMG_9548.jpeg" style="max-width:320px;border-radius:8px;display:block;margin-bottom:8px">
+      <input type="file" id="proof" class="input">
+      <p id="uploadmsg" class="smallnote"></p>
+      <button id="uploadbtn" class="btn">Upload Proof</button>
+    </div>
+    <div style="margin-top:12px"><a href="dashboard.html" class="smallbtn">Back</a></div>
+  </div>
+  <script>
+    document.getElementById('uploadbtn').addEventListener('click', function(){
+      const f = document.getElementById('proof').files[0];
+      if(!f){ alert('Please choose a screenshot proof file'); return; }
+      // we simulate upload by storing a flag
+      localStorage.setItem('pautang_uploaded_proof','1');
+      document.getElementById('uploadmsg').textContent = 'Uploaded. You will see a 24 hours verification notice on Dashboard (displayed for 10 seconds for screenshot).';
+      // set pending
+      localStorage.setItem('pautang_pending_verification','1');
+    });
+  </script>
+</body></html>

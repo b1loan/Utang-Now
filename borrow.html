@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Borrow - Pautang Peso</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="assets/style.css"></head>
+<body>
+  <div class="container">
+    <div class="header"><div class="logo">Borrow / Loan</div></div>
+
+    <div class="card">
+      <p>Type amount (min ₱5,000, max ₱10,000). You can type up to 5 digits (without .00). Interest is fixed: 18% (6 months) or 21% (12 months).</p>
+      <label>Loan Amount: <input id="loanamount" class="input" placeholder="e.g. 5000"></label>
+      <label>Loan Period:
+        <select id="loanperiod" class="input">
+          <option value="6">6 months (18%)</option>
+          <option value="12">12 months (21%)</option>
+        </select>
+      </label>
+      <p>Platform and processing Fee: ₱99.99</p>
+      <button id="calcbtn" class="btn">Calculate</button>
+      <div id="loanresult" style="margin-top:10px" class="card smallnote"></div>
+    </div>
+
+    <div style="margin-top:12px">
+      <a href="payment.html" class="btn">Go to Payment (Platform Fee)</a>
+      <a href="dashboard.html" class="smallbtn">Back</a>
+    </div>
+  </div>
+  <script src="assets/app.js"></script>
+</body></html>
